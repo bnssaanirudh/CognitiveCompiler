@@ -29,7 +29,7 @@ export function validateConfig(config: AppConfig): ValidatorError[] {
     if (possibleTable && !dbTables.has(possibleTable)) {
       errors.push({
         rule: 'Rule 2',
-        message: `API endpoint path '/${endpoint.path}' references unknown table '${possibleTable}' in DB schema.`,
+        message: `API endpoint path '/${endpoint.path.replace(/^\/+/, '')}' references unknown table '${possibleTable}' in DB schema.`,
         layer: 'API'
       });
     }
@@ -40,7 +40,7 @@ export function validateConfig(config: AppConfig): ValidatorError[] {
         if (!tableColumns.has(field)) {
           errors.push({
             rule: 'Rule 2',
-            message: `API field '${field}' in '/${endpoint.path}' not found in DB table '${possibleTable}'.`,
+            message: `API field '${field}' in '/${endpoint.path.replace(/^\/+/, '')}' not found in DB table '${possibleTable}'.`,
             layer: 'API'
           });
         }
@@ -52,7 +52,7 @@ export function validateConfig(config: AppConfig): ValidatorError[] {
       if (!auth.roles.includes(role) && role !== 'public') {
         errors.push({
           rule: 'Rule 3',
-          message: `API endpoint '/${endpoint.path}' references unknown role '${role}'.`,
+          message: `API endpoint '/${endpoint.path.replace(/^\/+/, '')}' references unknown role '${role}'.`,
           layer: 'AUTH'
         });
       }
@@ -85,7 +85,7 @@ export function validateConfig(config: AppConfig): ValidatorError[] {
             if (!apiFields.has(field)) {
               errors.push({
                 rule: 'Rule 1',
-                message: `UI component '${comp.name}' field '${field}' not found in API schema for related path '/${endpoint.path}'.`,
+                message: `UI component '${comp.name}' field '${field}' not found in API schema for related path '/${endpoint.path.replace(/^\/+/, '')}'.`,
                 layer: 'UI'
               });
             }

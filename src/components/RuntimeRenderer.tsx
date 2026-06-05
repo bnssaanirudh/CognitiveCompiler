@@ -172,7 +172,7 @@ export default function RuntimeRenderer({ config }: RuntimeProps) {
       setApiCallLog(prev => [{
         time: new Date().toLocaleTimeString(),
         method: 'POST',
-        path: '/' + endpoint.path,
+        path: '/' + endpoint.path.replace(/^\/+/, ''),
         status: 201,
       }, ...prev.slice(0, 9)]);
     }
@@ -226,7 +226,7 @@ export default function RuntimeRenderer({ config }: RuntimeProps) {
             <div className="w-3 h-3 rounded-full bg-emerald-400" />
           </div>
           <div className="ml-2 bg-white border border-slate-200 rounded-lg px-4 py-1 text-xs font-mono text-slate-500 min-w-[200px]">
-            localhost:3001/{activePage || ''}
+            localhost:3001/{activePage.replace(/^\/+/, '') || ''}
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -426,7 +426,7 @@ export default function RuntimeRenderer({ config }: RuntimeProps) {
                         ep.method === 'DELETE' ? 'bg-red-50 text-red-600 border border-red-200' :
                         'bg-amber-50 text-amber-600 border border-amber-200'
                       }`}>{ep.method}</span>
-                      <span className="font-mono text-sm text-slate-800 font-medium">/{ep.path}</span>
+                      <span className="font-mono text-sm text-slate-800 font-medium">/{ep.path.replace(/^\/+/, '')}</span>
                       <div className="ml-auto flex items-center gap-2 text-[10px] uppercase font-bold text-slate-500 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200">
                         <Key size={12} className="text-teal-500" /> {ep.roles.join(', ')}
                       </div>
