@@ -211,10 +211,10 @@ export default function Dashboard() {
             {hasStarted && (
               <button
                 onClick={handleReset}
-                className="mr-1 p-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-500 hover:text-slate-800"
-                title="Back to home"
+                className="mr-3 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors text-slate-600 hover:text-slate-900 flex items-center gap-1 font-bold text-sm bg-slate-50 border border-slate-200 shadow-sm"
+                title="Return to home"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} /> Return
               </button>
             )}
             <div className="w-9 h-9 border border-emerald-200 bg-emerald-50 rounded-lg flex items-center justify-center">
