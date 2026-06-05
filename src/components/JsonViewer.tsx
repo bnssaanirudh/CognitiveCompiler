@@ -9,7 +9,7 @@ export default function JsonViewer({ data }: { data: any }) {
     <Editor
       height="100%"
       defaultLanguage="json"
-      theme="vs-dark"
+      theme="light"
       value={JSON.stringify(data, null, 2)}
       options={{ 
         readOnly: true, 
