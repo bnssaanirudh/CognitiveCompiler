@@ -524,6 +524,7 @@ function seedValue(columnName: string, name: string): string {
   if (col.includes('role')) return 'user';
   if (col.includes('status')) return 'active';
   if (col.includes('price') || col.includes('amount') || col.includes('cost')) return '$' + (Math.random() * 200 + 10).toFixed(2);
+  if (col.includes('quantity') || col.includes('qty') || col.includes('stock') || col.includes('count')) return String(Math.floor(10 + Math.random() * 90));
   if (col.includes('date') || col.includes('created') || col.includes('updated')) return new Date().toISOString().split('T')[0];
   if (col.includes('id') || col === 'id') return String(Math.floor(1000 + Math.random() * 9000));
   if (col.includes('description') || col.includes('notes') || col.includes('bio')) return 'Sample ' + columnName;
